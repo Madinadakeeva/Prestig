@@ -1,21 +1,19 @@
-
 export default function Category({ value, onClickCategory }) {
-  const categories = [
-    "Популярные продукты",
-    "Стулья",
-    "Товары для дома",
-    "Столы",
-    "Товары по низким ценам",
+  const category = [
+    "decor",
+    "tables",
+    "chairs",
+    'popular'
   ];
 
   return (
     <div>
       <ul className="nav">
-        {categories.map((categoryName, i) => (
+        {category.map((categoryName, i) => (
           <li
             key={i}
-            onClick={() => onClickCategory(i)}
-            className={value === i ? "active" : ""}
+            onClick={() => onClickCategory(categoryName)}
+            className={value === categoryName ? "active" : ""}
           >
             {categoryName}
           </li>

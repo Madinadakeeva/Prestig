@@ -6,8 +6,3 @@ export default function ProductPhoto({ url}) {
       </div>
     );
   }
-
-  // width={width} height={heigh}
-
-  // , width = "350", heigh = "350" 
-

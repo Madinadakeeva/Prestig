@@ -1,7 +1,7 @@
 import Container from "./Container";
 import ProductCard from "./ProductCard";
 
-export default function ProductList({ list, onBuy }) {
+export default function ProductList({ list }) {
 
   return (
     <div className="presentation">
@@ -10,8 +10,6 @@ export default function ProductList({ list, onBuy }) {
           (element) =>
             element.inStock && (
               <ProductCard
-                // showBuyButton={true}
-                // onButtonClick={() => onBuy(element)}
                 title={element.title}
                 url={element.image}
                 description={element.description}
