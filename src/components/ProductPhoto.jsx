@@ -1,7 +1,7 @@
 export default function ProductPhoto({ url}) {
     return (
       <div>
-        <img src={url}/>
+        <img src={url} alt={url}/>
         
       </div>
     );
