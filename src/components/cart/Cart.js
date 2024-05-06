@@ -1,38 +1,56 @@
 import { CartContext } from "./CartContext";
 import { useContext } from "react";
-import CartList from "./CartList";
-export default function CartList() {
+import CartItem from "./CartItem";
+import "./Cart.css";
+import { useNavigate } from "react-router-dom";
+import { AiOutlineCloseCircle } from "react-icons/ai";
+import React from "react";
+import { Col, Divider, Row } from "antd";
+const style = {
+  background: "#fff",
+  padding: "8px 0",
+};
+export default function Cart() {
   const cart = useContext(CartContext);
+  const navigate = useNavigate();
+  const cost = cart.items.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
 
-  const cost = cart.items.reduce((sum, item) => sum + item.price * item.quantity, 0);
   return (
-      <div>
-          <h5>Ваша корзина</h5>
-          {cart.items.length ? (
-              <table>
-                  <thead>
-                      <tr>
-                          <th>Наименование</th>
-                          <th>Количество</th>
-                          <th>Цена</th>
-                          <th>Сумма</th>
-                          <th>Удалить</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      {cart.items.map(item =>
-                          <CartList key={item.id} {...item} />
-                      )}
-                      <tr>
-                          <th colSpan="3">Итого</th>
-                          <th>{cost}</th>
-                          <th>тг.</th>
-                      </tr>
-                  </tbody>
-              </table>
-          ) : (
-              <p>Ваша корзина пуста</p>
-          )}
-      </div>
+    <div className="cart-modal">
+      <AiOutlineCloseCircle
+        className="cart-modal-close cart-item-delete"
+        onClick={() => {
+          navigate("/");
+        }}
+      />
+      <Divider orientation="left">Ваша корзина</Divider>
+
+      <Row gutter={16}>
+        <Col className="gutter-row" span={4}>
+          <div style={style}>Наименование</div>
+        </Col>
+        <Col className="gutter-row" span={4}>
+          <div style={style}>Количество</div>
+        </Col>
+        <Col className="gutter-row" span={4}>
+          <div style={style}>Цена</div>
+        </Col>
+        <Col className="gutter-row" span={4}>
+          <div style={style}>Сумма</div>
+        </Col>
+        <Col className="gutter-row" span={4}>
+          <div style={style}>Удалить</div>
+        </Col>
+        <Col className="gutter-row" span={4}>
+          <div style={style}>Итого {cost} тг. </div>
+        </Col>
+      </Row>
+      {cart.items.map((item) => (
+        <CartItem key={item.id} {...item} />
+      ))}
+    </div>
   );
 }

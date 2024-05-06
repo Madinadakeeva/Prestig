@@ -1,10 +1,11 @@
 import ProductPhoto from "./ProductPhoto";
-import { useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { useContext, useState } from "react";
+import { CartContext } from "./cart/CartContext";
 export default function ProductCard(props) {
-  const { title, description, image, rating, count, inStock, onButtonClick,} = props;
+  const { append } = useContext(CartContext);
+  const { rating, count, inStock } = props;
   const [text, setText] = useState(false);
-  const {id} = useParams();
+
   return (
     <div className="img">
       <ProductPhoto {...props} />
@@ -17,14 +18,19 @@ export default function ProductCard(props) {
       <button className="btn" onClick={() => setText(!text)}>
         {!text ? "подробнее" : "скрыть"}
       </button>
-      <NavLink to={'/cart'}> <button
+
+      <button
+        onClick={() => append(props)}
         id="btn"
         disabled={!inStock}
         className={inStock ? "activ" : "inactiv"}
       >
         {inStock ? "Купить" : "нет в наличии"}
-      </button></NavLink>
-      <button className="plus">+</button>
+      </button>
+
+      <button onClick={() => append(props)} className="plus">
+        +
+      </button>
     </div>
   );
 }

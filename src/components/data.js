@@ -11,7 +11,7 @@ export const data = [
       Высота, мм - 800`,
       category: "chairs",
       image: "https://www.dilda.kz/sites/default/files/common/styles/product_full/public/strippe.jpg?itok=rorDGH2D",
-      rating: { rate: 3.9, count: 120 },
+      rating: { rate: 4, count: 300 },
       inStock: true,
     },
     {

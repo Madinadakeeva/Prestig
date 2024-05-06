@@ -1,24 +1,22 @@
+import { Button, Flex } from "antd";
 export default function Category({ value, onClickCategory }) {
-  const category = [
-    "decor",
-    "tables",
-    "chairs",
-    'popular'
-  ];
+  const category = ["decor", "tables", "chairs", "popular"];
 
   return (
     <div>
-      <ul className="nav">
-        {category.map((categoryName, i) => (
-          <li
-            key={i}
-            onClick={() => onClickCategory(categoryName)}
-            className={value === categoryName ? "active" : ""}
-          >
-            {categoryName}
-          </li>
-        ))}
-      </ul>
+      <Flex gap="small" wrap>
+        <ul className="nav">
+          {category.map((categoryName, i) => (
+            <Button
+              key={i}
+              onClick={() => onClickCategory(categoryName)}
+              className={value === categoryName ? "active" : ""}
+            >
+              {categoryName}
+            </Button>
+          ))}
+        </ul>
+      </Flex>
     </div>
   );
 }

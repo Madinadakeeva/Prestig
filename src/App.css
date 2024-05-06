@@ -58,28 +58,34 @@ ul.nav li:hover{
     opacity: 0.5;
 }
 
-.shop{
+ul.nav{
+    float: right;
+    list-style: none;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+ul.nav button:hover{
+    opacity: 0.5;
+}
+
+ul.nav button{
+    display: inline;
+    margin-left: 25px;
+    cursor: pointer;
+    transition: opacity 500ms ease;
+}
+
+.shop-cart{
     float: right;
     cursor: pointer;
     transition: color, transform 500ms ease;
 }
 
-header .shop:hover,
-header .shop.active{
+header .shop-cart:hover,
+header .shop-cart.active{
     color: #be3e3e;
     transform: scale(1.5);
-}
-
-header .shop-cart{
-    position: absolute;
-    top: 30px;
-    right: 0;
-    width: 450px;
-    min-height: 100px;
-    background: #dbd9d9;
-    -webkit-box-shadow: 1px 3px 10px 3px rgba(0,0,0,0.51); 
-    box-shadow: 1px 3px 10px 3px rgba(0,0,0,0.51);
-    z-index: 1000;
 }
 
 header .presentation{

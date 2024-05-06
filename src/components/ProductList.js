@@ -2,7 +2,6 @@ import Container from "./Container";
 import ProductCard from "./ProductCard";
 
 export default function ProductList({ list }) {
-
   return (
     <div className="presentation">
       <Container>
