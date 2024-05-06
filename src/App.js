@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Company from "./components/Company";
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
-//import Oplata from "./components/Oplata";
+// import Oplata from "./components/Oplata";
 import { useState } from "react";
 import Dostavka from "./components/Dostavka";
 import Cart from "./components/cart/Cart";
