@@ -4,11 +4,11 @@ const CartContext = createContext();
 
 const CartContextProvider = (props) => {
   const [arrItems, setArrItems] = useState([]); // все товары, которые сейчас в корзине
-  const [showItems, setShowItems] = useState(false); // содержимое корзины сейчас показывается?
+  const [showItems, setShowItems] = useState(false); // содержимое корзины 
   const [showAlert, setShowAlert] = useState(null); // сообщение после добавления в корзину
 
   const append = (item, quantity = 1) => {
-    // нужно проверить, нет ли уже такого товара в корзине
+    // нет ли уже такого товара в корзине
     const itemIndex = arrItems.findIndex((value) => value.id === item.id);
     if (itemIndex < 0) {
       // такого товара еще нет
@@ -16,6 +16,7 @@ const CartContextProvider = (props) => {
         ...item,
         quantity: quantity,
       };
+      console.log(item)
       setArrItems([...arrItems, newItem]);
     } else {
       // такой товар уже есть
@@ -23,7 +24,7 @@ const CartContextProvider = (props) => {
         ...arrItems[itemIndex],
         quantity: arrItems[itemIndex].quantity + quantity,
       };
-      const newCart = arrItems.slice(); // копия массива arrItems
+      const newCart = arrItems.slice();
       newCart.splice(itemIndex, 1, newItem);
       setArrItems(newCart);
     }
@@ -39,7 +40,6 @@ const CartContextProvider = (props) => {
 
   const hideAlert = () => setShowAlert(null);
 
-  // контекст, который будет доступен всем потомкам
   const value = {
     items: arrItems,
     append: append,

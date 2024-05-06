@@ -1,26 +1,27 @@
 import ProductPhoto from "./ProductPhoto";
 import { useContext, useState } from "react";
 import { CartContext } from "./cart/CartContext";
-export default function ProductCard(props) {
+
+export default function ProductCard({product}) {
   const { append } = useContext(CartContext);
-  const { rating, count, inStock } = props;
+  const { title, price, rating, description, count,image,  inStock } = product;
   const [text, setText] = useState(false);
 
   return (
     <div className="img">
-      <ProductPhoto {...props} />
-      <h4>{props.title}</h4>
-      <h5>Цена: {props.price}</h5>
-      <h5 key={rating.id}>
-        Рейтинг: {rating}, Купили: {count}
+      <ProductPhoto url={image} />
+      <h4>{title}</h4>
+      <h5>Цена: {price}</h5>
+      <h5 key={rating.rate.id}>
+        Рейтинг: {rating.rate}, Купили: {count}
       </h5>
-      {text && <p>{props.description}</p>}
+      {text && <p>{description}</p>}
       <button className="btn" onClick={() => setText(!text)}>
         {!text ? "подробнее" : "скрыть"}
       </button>
 
       <button
-        onClick={() => append(props)}
+        onClick={() => append(product)}
         id="btn"
         disabled={!inStock}
         className={inStock ? "activ" : "inactiv"}
@@ -28,7 +29,7 @@ export default function ProductCard(props) {
         {inStock ? "Купить" : "нет в наличии"}
       </button>
 
-      <button onClick={() => append(props)} className="plus">
+      <button onClick={() => append(product)} className="plus">
         +
       </button>
     </div>

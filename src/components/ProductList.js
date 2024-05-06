@@ -9,12 +9,7 @@ export default function ProductList({ list }) {
           (element) =>
             element.inStock && (
               <ProductCard
-                title={element.title}
-                url={element.image}
-                description={element.description}
-                price={element.price}
-                rating={element.rating.rate}
-                inStock={element.inStock}
+                product={element}
                 key={element.id}
               />
             )
